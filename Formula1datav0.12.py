@@ -21,7 +21,7 @@ yearTK=IntVar()
 YearEntry=ct.CTkOptionMenu(master=win, values=["2018", "2019", "2020", "2021", "2022", "2023"], variable=yearTK)
 
 
-RaceLabel=ct.CTkLabel(win, text="Race:")
+RaceLabel=ct.CTkLabel(win, text="GP name:")
 raceTK=StringVar()
 RaceEntry=ct.CTkEntry(win, textvariable=raceTK)
 
@@ -29,11 +29,11 @@ SessionLabel=ct.CTkLabel(win, text="Session:")
 SessionTK=StringVar()
 SessionEntry=ct.CTkOptionMenu(master=win, values=["FP1", "FP2", "FP3", "Qualifying", "Race"], variable=SessionTK)
 
-DriverLabel=ct.CTkLabel(win, text="Driver 1:")
+DriverLabel=ct.CTkLabel(win, text="Driver 1 ID:")
 Driver3=StringVar()
 DriverEntry=ct.CTkEntry(win, textvariable=Driver3)
 
-DriverLabel2=ct.CTkLabel(win, text="Driver 2:")
+DriverLabel2=ct.CTkLabel(win, text="Driver 2 ID:")
 Driver4=StringVar()
 DriverEntry2=ct.CTkEntry(win, textvariable=Driver4)
 
