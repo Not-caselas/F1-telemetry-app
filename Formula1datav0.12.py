@@ -235,12 +235,3 @@ confirmButton.grid(row=6,columnspan=2)
 win.bind("enter", confirmButton)
 
 win.mainloop()
-
-
-
-
-
-
-
-
-
