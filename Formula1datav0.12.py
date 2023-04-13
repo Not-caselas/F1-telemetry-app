@@ -7,10 +7,9 @@ from fastf1 import plotting
 from fastf1 import utils
 from matplotlib import pyplot as plt
 from matplotlib.pyplot import figure
-import sys
-import numpy as np
 from tkinter import *
 import customtkinter as ct
+from time import sleep 
 
 ff1.plotting.setup_mpl()
 
@@ -52,10 +51,22 @@ DriverLabel.grid(row=3,column=0)
 DriverEntry.grid(row=3,column=1)
 DriverLabel2.grid(row=4,column=0)
 DriverEntry2.grid(row=4,column=1)
-Switch.grid(row=5, columnspan=2)
+Switch.grid(row=5, columnspan=2)            
+
+
+def progressbar():
+    global p
+    p = ct.CTkProgressBar(win, determinate_speed=0.1)
+    p.grid(row=7, columnspan=2)
+    p.set(0)
+    p.start()
+    win.update()
+
 
 def comparison():
     try:
+        global win
+        global p
         global yearTK
         global raceTK
         global SessionTK
@@ -73,7 +84,7 @@ def comparison():
         Driver2=Driver2.upper()
 
         quali = ff1.get_session(year, race, Session)
-        
+
         laps=quali.load_laps(with_telemetry=True)
         lapsDriver1=laps.pick_driver(Driver1)
         lapsDriver2=laps.pick_driver(Driver2)
@@ -196,17 +207,28 @@ def comparison():
         ax[6].spines['top'].set_color('white')
         ax[6].set_facecolor('xkcd:midnight blue')
 
-
+        p.stop()
+        p.set(1)
+        win.update()
+        
         # Hide x labels and tick labels for top plots and y ticks for right plots.
+
+        
         for a in ax.flat:
             a.label_outer()
+
+        sleep(0.7)
         plt.show() 
     
+
     except:
         fail=Label(win, text="You did something wrong, restart the program please")
         fail.grid(row=7, column=0)
 
 
+def doboth():
+    progressbar()
+    comparison()
 
 
 def function():
@@ -229,7 +251,7 @@ def function():
 
 
 
-confirmButton=ct.CTkButton(win, text="Confirm", command=comparison)
+confirmButton=ct.CTkButton(win, text="Confirm", command=doboth)
 confirmButton.grid(row=6,columnspan=2)
 
 win.bind("enter", confirmButton)
