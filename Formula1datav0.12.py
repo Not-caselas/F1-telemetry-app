@@ -55,18 +55,12 @@ Switch.grid(row=5, columnspan=2)
 
 
 def progressbar():
-    global p
-    p = ct.CTkProgressBar(win, determinate_speed=0.1)
-    p.grid(row=7, columnspan=2)
-    p.set(0)
-    p.start()
-    win.update()
+    pass
 
 
 def comparison():
     try:
         global win
-        global p
         global yearTK
         global raceTK
         global SessionTK
@@ -79,6 +73,12 @@ def comparison():
         Driver1=Driver3.get()
         Driver2=Driver4.get()
         Value=value.get()
+
+        p = ct.CTkProgressBar(win, determinate_speed=0.1)
+        p.grid(row=7, columnspan=2)
+        p.set(0)
+        p.start()
+        win.update()
 
         Driver1=Driver1.upper()
         Driver2=Driver2.upper()
@@ -217,7 +217,7 @@ def comparison():
         for a in ax.flat:
             a.label_outer()
 
-        sleep(0.7)
+        sleep(0.6)
         plt.show() 
     
 
@@ -251,9 +251,9 @@ def function():
 
 
 
-confirmButton=ct.CTkButton(win, text="Confirm", command=doboth)
+confirmButton=ct.CTkButton(win, text="Confirm", command=comparison)
 confirmButton.grid(row=6,columnspan=2)
 
-win.bind("enter", confirmButton)
+win.bind("<Return>",lambda _ : comparison())
 
 win.mainloop()
