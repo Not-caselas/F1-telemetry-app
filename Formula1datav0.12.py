@@ -218,8 +218,7 @@ def comparison():
             a.label_outer()
 
         sleep(0.6)
-        plt.show() 
-    
+        plt.show()
 
     except:
         fail=Label(win, text="You did something wrong, restart the program please")
